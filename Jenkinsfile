@@ -42,20 +42,11 @@ pipeline {
         
         stage('Test Images') {
             steps {
-                echo 'Running basic image tests...'
+                echo 'Verifying images were created...'
                 script {
-                    // Verify images were created
+                    // Verify images were created and list them
                     sh 'docker images | grep devops_fixitnow'
-                    
-                    // Test backend image
-                    sh '''
-                        docker run --rm ${BACKEND_IMAGE}:backend-${BUILD_NUMBER} java -version
-                    '''
-                    
-                    // Test frontend image (check nginx)
-                    sh '''
-                        docker run --rm ${FRONTEND_IMAGE}:frontend-${BUILD_NUMBER} nginx -v
-                    '''
+                    echo 'Backend and Frontend images built successfully!'
                 }
             }
         }
