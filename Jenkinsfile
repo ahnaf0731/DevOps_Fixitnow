@@ -4,10 +4,8 @@ pipeline {
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')
         DOCKERHUB_USERNAME = 'ahnaf4920'
-        BACKEND_IMAGE = "${DOCKERHUB_USERNAME}/devops_fixitnow:backend"
-        FRONTEND_IMAGE = "${DOCKERHUB_USERNAME}/devops_fixitnow:frontend"
-        BACKEND_IMAGE_LATEST = "${BACKEND_IMAGE}-latest"
-        FRONTEND_IMAGE_LATEST = "${FRONTEND_IMAGE}-latest"
+        BACKEND_IMAGE = "${DOCKERHUB_USERNAME}/devops_fixitnow"
+        FRONTEND_IMAGE = "${DOCKERHUB_USERNAME}/devops_fixitnow"
     }
     
     stages {
@@ -23,8 +21,8 @@ pipeline {
                 echo 'Building Backend Docker Image...'
                 dir('backend') {
                     script {
-                        sh 'docker build -t ${BACKEND_IMAGE}:${BUILD_NUMBER} .'
-                        sh 'docker tag ${BACKEND_IMAGE}:${BUILD_NUMBER} ${BACKEND_IMAGE}:latest'
+                        sh 'docker build -t ${BACKEND_IMAGE}:backend-${BUILD_NUMBER} .'
+                        sh 'docker tag ${BACKEND_IMAGE}:backend-${BUILD_NUMBER} ${BACKEND_IMAGE}:backend'
                     }
                 }
             }
@@ -35,8 +33,8 @@ pipeline {
                 echo 'Building Frontend Docker Image...'
                 dir('fixitnow') {
                     script {
-                        sh 'docker build -t ${FRONTEND_IMAGE}:${BUILD_NUMBER} .'
-                        sh 'docker tag ${FRONTEND_IMAGE}:${BUILD_NUMBER} ${FRONTEND_IMAGE}:latest'
+                        sh 'docker build -t ${FRONTEND_IMAGE}:frontend-${BUILD_NUMBER} .'
+                        sh 'docker tag ${FRONTEND_IMAGE}:frontend-${BUILD_NUMBER} ${FRONTEND_IMAGE}:frontend'
                     }
                 }
             }
@@ -51,12 +49,12 @@ pipeline {
                     
                     // Test backend image
                     sh '''
-                        docker run --rm ${BACKEND_IMAGE}:${BUILD_NUMBER} java -version
+                        docker run --rm ${BACKEND_IMAGE}:backend-${BUILD_NUMBER} java -version
                     '''
                     
                     // Test frontend image (check nginx)
                     sh '''
-                        docker run --rm ${FRONTEND_IMAGE}:${BUILD_NUMBER} nginx -v
+                        docker run --rm ${FRONTEND_IMAGE}:frontend-${BUILD_NUMBER} nginx -v
                     '''
                 }
             }
@@ -70,12 +68,12 @@ pipeline {
                 }
                 
                 echo 'Pushing Backend Image...'
-                sh 'docker push ${BACKEND_IMAGE}:${BUILD_NUMBER}'
-                sh 'docker push ${BACKEND_IMAGE}:latest'
+                sh 'docker push ${BACKEND_IMAGE}:backend-${BUILD_NUMBER}'
+                sh 'docker push ${BACKEND_IMAGE}:backend'
                 
                 echo 'Pushing Frontend Image...'
-                sh 'docker push ${FRONTEND_IMAGE}:${BUILD_NUMBER}'
-                sh 'docker push ${FRONTEND_IMAGE}:latest'
+                sh 'docker push ${FRONTEND_IMAGE}:frontend-${BUILD_NUMBER}'
+                sh 'docker push ${FRONTEND_IMAGE}:frontend'
             }
         }
         
@@ -100,8 +98,8 @@ pipeline {
         
         success {
             echo '✅ Pipeline completed successfully!'
-            echo "Backend Image: ${BACKEND_IMAGE}:${BUILD_NUMBER}"
-            echo "Frontend Image: ${FRONTEND_IMAGE}:${BUILD_NUMBER}"
+            echo "Backend Image: ${BACKEND_IMAGE}:backend-${BUILD_NUMBER}"
+            echo "Frontend Image: ${FRONTEND_IMAGE}:frontend-${BUILD_NUMBER}"
         }
         
         failure {
