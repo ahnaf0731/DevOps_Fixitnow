@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #161E54;
+  --color-secondary: #F16D34;
+  --color-accent: #10B981;
+  --color-bg: #ECECEC;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
+    "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  @apply bg-gray-100 text-gray-900;
+}
+
+.gradient-primary {
+  background: linear-gradient(135deg, #161E54 0%, #1F2970 100%);
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, #F16D34 0%, #161E54 100%);
+}
+
+.gradient-success {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+}
+
+.btn {
+  @apply inline-flex items-center justify-center px-5 py-2.5 rounded-xl font-medium transition-all duration-300 shadow-sm;
+}
+.btn-primary {
+  @apply text-white hover:scale-105 hover:shadow-md;
+  background: linear-gradient(135deg, #F16D34 0%, #161E54 100%);
+}
+.btn-outline {
+  @apply border-2 border-primary text-primary hover:bg-primary hover:text-white;
+}
+.card {
+  @apply bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300;
+}
+.input {
+  @apply w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all;
+}
+.badge {
+  @apply text-xs px-3 py-1 rounded-full font-semibold;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out;
+}

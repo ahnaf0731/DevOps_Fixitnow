@@ -1,0 +1,37 @@
+# Backend (Java/Maven)
+backend/target/
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
+backend/.idea/
+backend/*.iml
+backend/*.log
+
+# Frontend (React/Vite)
+fixitnow/node_modules/
+fixitnow/dist/
+fixitnow/.env
+fixitnow/.env.local
+fixitnow/*.log
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Mobile (Flutter)
+fixitnow_Mobile/build/
+fixitnow_Mobile/.dart_tool/
+fixitnow_Mobile/.flutter-plugins
+fixitnow_Mobile/.flutter-plugins-dependencies
+fixitnow_Mobile/.packages
+fixitnow_Mobile/pubspec.lock
+fixitnow_Mobile/windows/flutter/generated_*
+fixitnow_Mobile/linux/flutter/generated_*
+fixitnow_Mobile/macos/Flutter/GeneratedPluginRegistrant.swift
