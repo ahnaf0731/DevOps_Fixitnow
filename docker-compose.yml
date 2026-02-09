@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: fixitnow-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: fixitnow
+      MYSQL_USER: fixitnow_user
+      MYSQL_PASSWORD: fixitnow_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql-init:/docker-entrypoint-initdb.d
+    networks:
+      - fixitnow-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  # Spring Boot Backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: fixitnow-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/fixitnow?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: fixitnow_user
+      SPRING_DATASOURCE_PASSWORD: fixitnow_pass
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    ports:
+      - "8090:8090"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - fixitnow-network
+    restart: unless-stopped
+
+  # React Frontend
+  frontend:
+    build:
+      context: ./fixitnow
+      dockerfile: Dockerfile
+    container_name: fixitnow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - fixitnow-network
+    restart: unless-stopped
+
+networks:
+  fixitnow-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+    driver: local
