@@ -1,0 +1,14 @@
+# Copy this file to terraform.tfvars and fill in your values
+
+aws_region = "us-east-1"
+
+# Database credentials
+db_username = "admin"
+db_password = "your-secure-password-here"  # Change this!
+
+# RDS instance type (options: db.t3.micro, db.t3.small, db.t3.medium)
+db_instance_class = "db.t3.micro"
+
+# Docker image tags (update to specific build numbers if needed)
+backend_image_tag  = "backend"
+frontend_image_tag = "frontend"

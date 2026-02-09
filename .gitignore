@@ -25,6 +25,11 @@ fixitnow/*.log
 .DS_Store
 Thumbs.db
 
+# Archives
+*.zip
+*.tar.gz
+*.rar
+
 # Mobile (Flutter)
 fixitnow_Mobile/build/
 fixitnow_Mobile/.dart_tool/
