@@ -209,7 +209,7 @@ resource "aws_db_instance" "mysql" {
   publicly_accessible     = false
   vpc_security_group_ids  = [aws_security_group.rds.id]
   db_subnet_group_name    = aws_db_subnet_group.main.name
-  backup_retention_period = 7
+  backup_retention_period = 0
 
   tags = {
     Name = "fixitnow-mysql"
@@ -308,7 +308,7 @@ resource "aws_ecs_task_definition" "frontend" {
 
   container_definitions = jsonencode([{
     name  = "frontend"
-    image = "ahnaf4920/devops_fixitnow:frontend"
+    image = "ahnaf4920/devops_fixitnow:frontend-v4"
     portMappings = [{
       containerPort = 80
       protocol      = "tcp"

@@ -14,7 +14,7 @@ import Notifications from "./pages/Notifications";
 import SelectProvider from "./pages/SelectProvider";
 
 
-export const API_BASE_URL = "http://localhost:8090/api";
+export const API_BASE_URL = "/api";
 
 
 const AuthContext = createContext(null);
