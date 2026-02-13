@@ -308,7 +308,7 @@ resource "aws_ecs_task_definition" "frontend" {
 
   container_definitions = jsonencode([{
     name  = "frontend"
-    image = "ahnaf4920/devops_fixitnow:frontend-v4"
+    image = "ahnaf4920/devops_fixitnow:frontend"
     portMappings = [{
       containerPort = 80
       protocol      = "tcp"
