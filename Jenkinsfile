@@ -6,6 +6,10 @@ pipeline {
         DOCKERHUB_USERNAME = 'ahnaf4920'
         BACKEND_IMAGE = "${DOCKERHUB_USERNAME}/devops_fixitnow"
         FRONTEND_IMAGE = "${DOCKERHUB_USERNAME}/devops_fixitnow"
+        AWS_REGION = 'us-east-1'
+        ECS_CLUSTER = 'fixitnow-cluster'
+        BACKEND_SERVICE = 'fixitnow-backend-service'
+        FRONTEND_SERVICE = 'fixitnow-frontend-service'
     }
     
     stages {
@@ -72,6 +76,35 @@ pipeline {
                 echo 'Pushing Frontend Image...'
                 sh 'docker push ${FRONTEND_IMAGE}:frontend-${BUILD_NUMBER}'
                 sh 'docker push ${FRONTEND_IMAGE}:frontend'
+            }
+        }
+        
+        stage('Deploy to ECS') {
+            steps {
+                echo 'Deploying to AWS ECS...'
+                script {
+                    // Update Backend Service
+                    echo 'Updating Backend Service...'
+                    sh """
+                        aws ecs update-service \
+                            --cluster ${ECS_CLUSTER} \
+                            --service ${BACKEND_SERVICE} \
+                            --force-new-deployment \
+                            --region ${AWS_REGION}
+                    """
+                    
+                    // Update Frontend Service
+                    echo 'Updating Frontend Service...'
+                    sh """
+                        aws ecs update-service \
+                            --cluster ${ECS_CLUSTER} \
+                            --service ${FRONTEND_SERVICE} \
+                            --force-new-deployment \
+                            --region ${AWS_REGION}
+                    """
+                    
+                    echo '✅ ECS services updated successfully! New deployment in progress...'
+                }
             }
         }
         
