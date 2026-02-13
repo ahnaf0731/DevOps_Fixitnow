@@ -1,0 +1,182 @@
+{
+    "service": {
+        "serviceArn": "arn:aws:ecs:us-east-1:655632899507:service/fixitnow-cluster/fixitnow-backend-service",
+        "serviceName": "fixitnow-backend-service",
+        "clusterArn": "arn:aws:ecs:us-east-1:655632899507:cluster/fixitnow-cluster",
+        "loadBalancers": [
+            {
+                "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:655632899507:targetgroup/fixitnow-backend-tg/a06f8ce3ccf46343",
+                "containerName": "backend",
+                "containerPort": 8090
+            }
+        ],
+        "serviceRegistries": [],
+        "status": "ACTIVE",
+        "desiredCount": 1,
+        "runningCount": 1,
+        "pendingCount": 0,
+        "launchType": "FARGATE",
+        "platformVersion": "LATEST",
+        "platformFamily": "Linux",
+        "taskDefinition": "arn:aws:ecs:us-east-1:655632899507:task-definition/fixitnow-backend:1",
+        "deploymentConfiguration": {
+            "deploymentCircuitBreaker": {
+                "enable": false,
+                "rollback": false
+            },
+            "maximumPercent": 200,
+            "minimumHealthyPercent": 100,
+            "strategy": "ROLLING",
+            "bakeTimeInMinutes": 0
+        },
+        "deployments": [
+            {
+                "id": "ecs-svc/8891747691132465208",
+                "status": "PRIMARY",
+                "taskDefinition": "arn:aws:ecs:us-east-1:655632899507:task-definition/fixitnow-backend:1",
+                "desiredCount": 0,
+                "pendingCount": 0,
+                "runningCount": 0,
+                "failedTasks": 0,
+                "createdAt": "2026-02-13T15:51:35.529000+05:30",
+                "updatedAt": "2026-02-13T15:51:35.529000+05:30",
+                "launchType": "FARGATE",
+                "platformVersion": "1.4.0",
+                "platformFamily": "Linux",
+                "networkConfiguration": {
+                    "awsvpcConfiguration": {
+                        "subnets": [
+                            "subnet-01d6c1ab867f9cf3e",
+                            "subnet-0e3a12baf89b432f1"
+                        ],
+                        "securityGroups": [
+                            "sg-09362abd605c1b3d4"
+                        ],
+                        "assignPublicIp": "ENABLED"
+                    }
+                },
+                "rolloutState": "IN_PROGRESS",
+                "rolloutStateReason": "ECS deployment ecs-svc/8891747691132465208 in progress."
+            },
+            {
+                "id": "ecs-svc/5935080898564931536",
+                "status": "ACTIVE",
+                "taskDefinition": "arn:aws:ecs:us-east-1:655632899507:task-definition/fixitnow-backend:1",
+                "desiredCount": 0,
+                "pendingCount": 0,
+                "runningCount": 0,
+                "failedTasks": 0,
+                "createdAt": "2026-02-13T15:51:16.939000+05:30",
+                "updatedAt": "2026-02-13T15:51:32.259000+05:30",
+                "launchType": "FARGATE",
+                "platformVersion": "1.4.0",
+                "platformFamily": "Linux",
+                "networkConfiguration": {
+                    "awsvpcConfiguration": {
+                        "subnets": [
+                            "subnet-01d6c1ab867f9cf3e",
+                            "subnet-0e3a12baf89b432f1"
+                        ],
+                        "securityGroups": [
+                            "sg-09362abd605c1b3d4"
+                        ],
+                        "assignPublicIp": "ENABLED"
+                    }
+                },
+                "rolloutState": "IN_PROGRESS",
+                "rolloutStateReason": "ECS deployment ecs-svc/5935080898564931536 in progress."
+            },
+            {
+                "id": "ecs-svc/5327502240173360310",
+                "status": "ACTIVE",
+                "taskDefinition": "arn:aws:ecs:us-east-1:655632899507:task-definition/fixitnow-backend:1",
+                "desiredCount": 1,
+                "pendingCount": 0,
+                "runningCount": 1,
+                "failedTasks": 0,
+                "createdAt": "2026-02-10T03:06:43.321000+05:30",
+                "updatedAt": "2026-02-13T15:51:32.216000+05:30",
+                "launchType": "FARGATE",
+                "platformVersion": "1.4.0",
+                "platformFamily": "Linux",
+                "networkConfiguration": {
+                    "awsvpcConfiguration": {
+                        "subnets": [
+                            "subnet-01d6c1ab867f9cf3e",
+                            "subnet-0e3a12baf89b432f1"
+                        ],
+                        "securityGroups": [
+                            "sg-09362abd605c1b3d4"
+                        ],
+                        "assignPublicIp": "ENABLED"
+                    }
+                },
+                "rolloutState": "COMPLETED",
+                "rolloutStateReason": "ECS deployment ecs-svc/5327502240173360310 completed."
+            }
+        ],
+        "roleArn": "arn:aws:iam::655632899507:role/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS",
+        "events": [
+            {
+                "id": "a5943404-9d92-408f-aee1-0728550c6765",
+                "createdAt": "2026-02-13T15:13:44.737000+05:30",
+                "message": "(service fixitnow-backend-service) has reached a steady state."
+            },
+            {
+                "id": "845ee8dd-5e3b-4bc0-82e5-9fdc94fb97e4",
+                "createdAt": "2026-02-13T09:13:30.169000+05:30",
+                "message": "(service fixitnow-backend-service) has reached a steady state."
+            },
+            {
+                "id": "6452f108-601f-484a-a457-dbea5a2beb9d",
+                "createdAt": "2026-02-13T03:13:17.341000+05:30",
+                "message": "(service fixitnow-backend-service) has reached a steady state."
+            },
+            {
+                "id": "2ad61283-5012-4f05-8004-6b5d1d0a6bfe",
+                "createdAt": "2026-02-12T21:13:09.330000+05:30",
+                "message": "(service fixitnow-backend-service) has reached a steady state."
+            },
+            {
+                "id": "530ba34a-738a-4095-a48b-f631bc9db895",
+                "createdAt": "2026-02-12T15:12:24.762000+05:30",
+                "message": "(service fixitnow-backend-service) has reached a steady state."
+            },
+            {
+                "id": "b55f5aa7-41b9-4c0f-bcbd-a5cc31b7d419",
+                "createdAt": "2026-02-12T09:12:09.828000+05:30",
+                "message": "(service fixitnow-backend-service) has reached a steady state."
+            },
+            {
+                "id": "02615808-74d4-4f59-858d-f7ed1681a2a7",
+                "createdAt": "2026-02-12T03:11:59.286000+05:30",
+                "message": "(service fixitnow-backend-service) has reached a steady state."
+            },
+            {
+                "id": "f4f222a8-bc32-4fe9-b731-9f326652af29",
+                "createdAt": "2026-02-11T21:11:38.828000+05:30",
+                "message": "(service fixitnow-backend-service) has reached a steady state."
+            },
+            {
+                "id": "18e1923b-9697-4753-bbc7-52cb4291c8a7",
+                "createdAt": "2026-02-11T15:10:59.428000+05:30",
+                "message": "(service fixitnow-backend-service) has reached a steady state."
+            },
+            {
+                "id": "2310cc7c-edb8-4d5c-b0fe-47a948232a18",
+                "createdAt": "2026-02-11T09:10:46.701000+05:30",
+                "message": "(service fixitnow-backend-service) has reached a steady state."
+            },
+            {
+                "id": "a2824429-edf5-4673-b2df-9a1c1003b686",
+                "createdAt": "2026-02-11T03:10:04.721000+05:30",
+                "message": "(service fixitnow-backend-service) has reached a steady state."
+            },
+            {
+                "id": "f5683eb8-f1f8-4133-a257-c9d1205e5331",
+                "createdAt": "2026-02-10T21:09:44.113000+05:30",
+                "message": "(service fixitnow-backend-service) has reached a steady state."
+            },
+            {
+                "id": "2a02be64-7225-409b-b3fd-6c3af993bb5b",
+                "createdAt": "2026-02

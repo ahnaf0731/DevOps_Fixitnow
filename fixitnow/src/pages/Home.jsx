@@ -63,7 +63,7 @@ export default function Home() {
       <div className="px-5 py-5">
         {/* Welcome Card */}
         <div className="bg-[#161E54] rounded-3xl p-6 shadow-lg mb-8">
-          <h1 className="text-2xl font-bold text-white mb-2">Welcome Back! Ahnaf👋</h1>
+          <h1 className="text-2xl font-bold text-white mb-2">Welcome Back! sri lanka👋</h1>
           <p className="text-white/90">What service do you need today?</p>
         </div>
 
