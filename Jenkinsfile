@@ -9,6 +9,13 @@ pipeline {
     }
     
     stages {
+
+        stage('clean workspace') {
+            steps {
+                deleteDir() 
+            }
+        }
+        
         stage('Checkout') {
             steps {
                 echo 'Checking out code from GitHub...'
